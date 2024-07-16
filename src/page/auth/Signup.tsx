@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Images } from "../../assets";
+import HeaderNotLogin from "../../components/common/headerNotLogin";
 
 const Signup: React.FC = () => {
   const [id, setId] = useState<string>("");
@@ -31,6 +32,9 @@ const Signup: React.FC = () => {
 
   return (
     <>
+      <header>
+        <HeaderNotLogin />
+      </header>
       <Container>
         <SignupContainer>
           <BackButton onClick={handleLoginClick}>
@@ -66,6 +70,7 @@ const Signup: React.FC = () => {
               />
               <IdCheckButton>중복 체크</IdCheckButton>
               <IdSuccess>사용 가능한 아이디입니다.</IdSuccess>
+              <IdFailed>이미 사용 중인 아이디입니다.</IdFailed>
             </InputGroup>
             <InputGroup>
               <Label htmlFor="password">비밀번호</Label>
@@ -145,7 +150,7 @@ const BackIcon = styled.div`
 
 const Title = styled.h1`
   font-size: 32px;
-  margin-bottom: 1px;
+  margin: 40px 0 20px 0;
   color: #333;
   align-self: flex-start;
 `;
@@ -188,7 +193,7 @@ const InputGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #666;
   font-size: 14px;
 `;
@@ -258,7 +263,14 @@ const IdCheckButton = styled.button`
 const IdSuccess = styled.p`
   font-size: 14px;
   color: #1860f0;
-  margin-top: 3px;
+  margin-top: 5px;
+  padding: 0;
+`;
+
+const IdFailed = styled.p`
+  font-size: 14px;
+  color: #ff0000;
+  margin-top: 5px;
   padding: 0;
 `;
 

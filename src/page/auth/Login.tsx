@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import HeaderNotLogin from "../../components/common/headerNotLogin";
 
 const Login: React.FC = () => {
   const [id, setId] = useState<string>("");
@@ -29,6 +30,9 @@ const Login: React.FC = () => {
 
   return (
     <>
+      <header>
+        <HeaderNotLogin />
+      </header>
       <Container>
         <LoginContainer>
           {/* <GoBackButton onClick={handleGoBack}>{"<"}</GoBackButton> */}
@@ -153,7 +157,7 @@ const GoBackButton = styled.button`
 
 const Title = styled.h1`
   font-size: 32px;
-  margin-bottom: 1px;
+  margin: 40px 0 20px 0;
   color: #333;
   align-self: flex-start;
 `;
@@ -173,7 +177,7 @@ const InputGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   color: #666;
   font-size: 14px;
 `;
