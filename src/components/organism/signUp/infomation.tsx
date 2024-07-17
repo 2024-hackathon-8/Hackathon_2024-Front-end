@@ -7,81 +7,81 @@ import { Input } from '../../designSystem/Input';
 import { Button } from '../../designSystem/Button';
 import { useForm } from '../../../hooks/useForm';
 
-export default function Signup() {
+export default function Information() {
   const navigate = useNavigate();
 
+  const [idChecked, setIdChecked] = useState(false);
+
   const { form, handleChange } = useForm<{
-    phone: string;
-    certification: string;
-  }>({ phone: '', certification: '' });
+    id: string;
+    password: string;
+    checkPassword: string;
+  }>({ id: '', password: '', checkPassword: '' });
 
   useEffect(() => console.log(form), [form]);
 
+  const handleIdCheck = () => {
+    // Simulate ID check
+    setIdChecked(true);
+  };
+
   return (
     <Main>
-      <LoginSection>
+      <SignupSection>
         <TitleBox>
           <BackButton />
           <div style={{ marginTop: '16px' }}>
-            <Text font="TitleLarge">회원가입</Text>
+            <Text font="TitleLarge">기본 정보</Text>
           </div>
           <Text font="BodyMedium" color="Gray500">
-            회원가입 하여 서비스를 이용해 보세요.
+            기본 정보를 입력해 주세요.
           </Text>
         </TitleBox>
         <InputBox>
-          <IdCheckWrapper>
-            <Input
-              placeholder="아이디를 입력해 주세요.."
-              label="아이디"
-              name="id"
-              required
-              value={form.phone}
-              onChange={handleChange}
-            />
-            <Button size="large">중복 체크</Button>
-          </IdCheckWrapper>
+          <Input
+            placeholder="아이디를 입력해 주세요.."
+            label="아이디"
+            name="id"
+            required
+            value={form.id}
+            onChange={handleChange}
+          />
+          <Button size="large" style={{width:'25%'}} onClick={handleIdCheck}>중복 체크</Button>
+          {idChecked && (
+            <Text font="LabelSmall" color="Blue500">
+              사용 가능한 아이디 입니다.
+            </Text>
+          )}
           <Input
             placeholder="비밀번호를 입력해 주세요.."
             label="비밀번호"
             name="password"
             required
             type="password"
-            value={form.certification}
+            value={form.password}
+            onChange={handleChange}
+          />
+          <Input
+            placeholder="비밀번호를 입력해 주세요.."
+            label="비밀번호 확인"
+            name="checkPassword"
+            required
+            type="password"
+            value={form.checkPassword}
             onChange={handleChange}
           />
         </InputBox>
         <ButtonBox>
-          <Button size="large" full onClick={() => navigate('/infomation')}>
+          <Button size="large" full onClick={() => navigate('/signupType')}>
             다음
           </Button>
-          <QuestionBox>
-              <Text font="BodySmall" color="Gray500">
-                이미 가입하셨나요?
-              </Text>
-              <a href="/login">
-                <Text font="LabelMedium" color="Blue500">
-                  로그인
-                </Text>
-              </a>
-            </QuestionBox>
         </ButtonBox>
-      </LoginSection>
+      </SignupSection>
     </Main>
   );
 }
 
-const IdCheckWrapper = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;
 
-const QuestionBox = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
 
 const ButtonBox = styled.div`
   display: flex;
@@ -102,7 +102,7 @@ const TitleBox = styled.div`
   gap: 8px;
 `;
 
-const LoginSection = styled.form`
+const SignupSection = styled.form`
   display: flex;
   max-width: 480px;
   width: 100%;
