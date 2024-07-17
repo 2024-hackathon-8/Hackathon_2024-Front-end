@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export function useForm<T>(initialState: T) {
   const [form, setForm] = useState<T>(initialState);
@@ -6,6 +6,7 @@ export function useForm<T>(initialState: T) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    console.log(e);
     const { name, value } = e.target;
     setForm((prevForm) => ({
       ...prevForm,

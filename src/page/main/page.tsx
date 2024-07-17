@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { Button } from '../../components/designSystem/Button';
 import { Colors } from '../../styles/colors';
 
-export function MainPage() {
+export default function MainPage() {
   return (
     <Main>
       <Image

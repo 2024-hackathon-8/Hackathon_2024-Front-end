@@ -58,6 +58,6 @@ export const Fonts: { [key in any]: React.CSSProperties } = {
     lineHeight: '64px',
     letterSpacing: '-2.5%',
   },
-};
+} as const;
 
 export type fontsKeyOfType = keyof typeof Fonts;

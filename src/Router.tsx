@@ -5,7 +5,7 @@ import Writepost from './components/organism/Writepost';
 import AllPost from './components/organism/AllPost';
 import LogInPage from './page/logIn/page';
 import SignupCompo from './components/organism/signUp';
-import { MainPage } from './page/main/page';
+import MainPage from './page/main/page';
 import { Header } from './components/designSystem/Header';
 import { Footer } from './components/designSystem/Footer';
 

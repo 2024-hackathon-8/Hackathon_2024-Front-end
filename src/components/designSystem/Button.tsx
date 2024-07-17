@@ -1,4 +1,4 @@
-import React, { ComponentProps, CSSProperties } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 import { Colors } from '../../styles/colors';
 import { Fonts } from '../../styles/fonts';
 import styled from 'styled-components';
