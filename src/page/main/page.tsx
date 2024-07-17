@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Button } from '../../components/designSystem/Button';
 import { Colors } from '../../styles/colors';
 
@@ -15,13 +15,13 @@ export function MainPage() {
         src="/images/2.webp"
         width={512}
         height={512}
-        style={{ bottom: '128px', right: '80px' }}
+        style={{ bottom: '128px', right: '80px', animationDelay: '0.1s' }}
       />
       <Image
         src="/images/3.webp"
         width={512}
         height={512}
-        style={{ bottom: '-164px', right: '480px' }}
+        style={{ bottom: '-164px', right: '480px', animationDelay: '0.2s' }}
       />
       <TitleSection>
         <Title>파운더즈</Title>
@@ -34,11 +34,24 @@ export function MainPage() {
   );
 }
 
+const Bounce = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(240px) rotate(30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+`;
+
 const Image = styled.img`
   width: 512px;
   height: 512px;
   object-fit: contain;
   position: absolute;
+  animation: ${Bounce} 2s infinite alternate cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0;
 `;
 const Main = styled.main`
   display: flex;
@@ -54,6 +67,7 @@ const TitleSection = styled.section`
   flex-direction: column;
   align-items: center;
   position: relative;
+  animation: up 0.3s forwards;
 `;
 const Title = styled.h1`
   font-size: 96px;

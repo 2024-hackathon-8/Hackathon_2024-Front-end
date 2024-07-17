@@ -7,6 +7,17 @@
   font-family: Pretendard;
 }
 
+@keyframes up {
+  0% {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 html,
 body,
 div,
@@ -130,4 +141,7 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+a {
+  text-decoration: none;
 }

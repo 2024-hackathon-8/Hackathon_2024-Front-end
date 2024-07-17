@@ -8,11 +8,13 @@ import HeaderNotLogin from './components/designSystem/common/headerNotLogin';
 import LogInPage from './page/logIn/page';
 import SignupCompo from './components/organism/signUp';
 import { MainPage } from './page/main/page';
+import { Header } from './components/designSystem/Header';
+import { Footer } from './components/designSystem/Footer';
 
 export default function Router() {
   return (
     <BrowserRouter>
-      <HeaderNotLogin />
+      <Header />
       {/* <HeaderLogined /> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -21,6 +23,7 @@ export default function Router() {
         <Route path="/post" element={<AllPost />} />
         <Route path="/write" element={<Writepost />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
