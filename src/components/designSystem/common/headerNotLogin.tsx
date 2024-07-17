@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../../assets/Img/TestingLogo.png";
+import Logo from "../../../assets/Img/TestingLogo.png";
 import { useNavigate } from "react-router-dom";
 
 function HeaderNotLogin() {
@@ -15,32 +15,33 @@ function HeaderNotLogin() {
   };
 
   return (
-    <Container>
-      <ItemWrapper>
-        <LeftWrapper>
-          <NavButton>
-            <img src={Logo} />
-          </NavButton>
-          <NavButton>사업 아이템</NavButton>
-        </LeftWrapper>
-        <RightWrapper>
-          <NavButton onClick={toSignUp}>회원가입</NavButton>
-          <LoginButton onClick={toLogin}>로그인</LoginButton>
-        </RightWrapper>
-      </ItemWrapper>
-    </Container>
+    <>
+      <Container>
+        <ItemWrapper>
+          <LeftWrapper>
+            <NavButton>
+              <img src={Logo} />
+            </NavButton>
+            <NavButton>사업 아이템</NavButton>
+          </LeftWrapper>
+          <RightWrapper>
+            <NavButton onClick={toSignUp}>회원가입</NavButton>
+            <LoginButton onClick={toLogin}>로그인</LoginButton>
+          </RightWrapper>
+        </ItemWrapper>
+      </Container>
+    </>
   );
 }
 
 export default HeaderNotLogin;
 
 const Container = styled.div`
+  position: fixed;
   width: 100%;
   height: 60px;
   background: white;
   border-bottom: 1px solid #eeeeee;
-  margin: 0;
-  padding: 0;
 `;
 
 const ItemWrapper = styled.div`

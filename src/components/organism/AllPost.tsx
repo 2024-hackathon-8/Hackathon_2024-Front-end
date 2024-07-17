@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import HeaderLogined from "../components/common/headerLogined";
-import AllPostImg from "../assets/Img/AllPostImg.png";
+import HeaderLogined from "../designSystem/common/headerLogined";
+import AllPostImg from "../../assets/Img/AllPostImg.png";
 import { useNavigate } from "react-router-dom";
 
 function AllPost() {

@@ -1,18 +1,25 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./page/auth/Login";
-import Signup from "./page/auth/Signup";
-import Writepost from "./page/Writepost";
-import AllPost from "./page/AllPost";
+// import Login from "./components/organism/logIn";
+// import Signup from "./components/organism/Signup";
+import Writepost from "./components/organism/Writepost";
+import AllPost from "./components/organism/AllPost";
+import HeaderLogined from "./components/designSystem/common/headerLogined";
+import HeaderNotLogin from "./components/designSystem/common/headerNotLogin";
+import LogInPage from "./page/logIn/page";
+import SignupCompo from "./components/organism/signUp";
 export default function Router() {
   return (
     <BrowserRouter>
+      <HeaderNotLogin />
       <Routes>
-        <Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/Writepost" element={<Writepost />} />
-          <Route path="/Post" element={<AllPost />} />
-        </Route>
+        <Route path="/login" element={<LogInPage />} />
+        <Route path="/signup" element={<SignupCompo />} />
+      </Routes>
+
+      {/* <HeaderLogined /> */}
+      <Routes>
+        <Route path="/post" element={<AllPost />} />
+        <Route path="/write" element={<Writepost />} />
       </Routes>
     </BrowserRouter>
   );

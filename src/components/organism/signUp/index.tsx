@@ -1,10 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Images } from "../../assets";
-import HeaderNotLogin from "../../components/common/headerNotLogin";
+import HeaderNotLogin from "../../designSystem/common/headerNotLogin";
 
-const Signup: React.FC = () => {
+export default function SignupCompo() {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -106,9 +105,7 @@ const Signup: React.FC = () => {
       </Container>
     </>
   );
-};
-
-export default Signup;
+}
 
 const Container = styled.div`
   display: flex;

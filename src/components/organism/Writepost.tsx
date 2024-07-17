@@ -1,20 +1,38 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
-import HeaderLogined from "../components/common/headerLogined";
-import BannerImg from "../assets/Img/Item.png";
+import HeaderLogined from "../designSystem/common/headerLogined";
+import BannerImg from "../../assets/Img/Item.png";
 
-const Writepost: React.FC = () => {
+function Writepost() {
   const [title, setTitle] = useState<string>("");
   const [introduce, SetIntrodcue] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [goal, setGoal] = useState<string>("");
   const [tag, setTag] = useState<string>("");
-
+  const [tags, setTags] = useState<string[]>([]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
+  const handleAddTag = () => {
+    if (tag.trim() !== "" && !tags.includes(tag.trim())) {
+      setTags([...tags, tag.trim()]);
+      setTag("");
+    }
+  };
 
+  const handleRemoveTag = (index: number) => {
+    const newTags = [...tags];
+    newTags.splice(index, 1);
+    setTags(newTags);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddTag();
+    }
+  };
   return (
     <>
       <header>
@@ -56,7 +74,7 @@ const Writepost: React.FC = () => {
           </InputConatiner>
 
           <InputConatiner>
-            <Label>소개</Label>
+            <Label>사업 소개</Label>
             <MarkDownContainer>
               <Textarea
                 value={content}
@@ -94,25 +112,18 @@ const Writepost: React.FC = () => {
               placeholder="분야 태그를 추가해보세요"
               onChange={(e) => setTag(e.target.value)}
               value={tag}
+              onKeyDown={handleKeyDown}
             />
           </InputConatiner>
           <TagConatainer>
-            <TagItem>
-              <Tag>
-                #IT
-                <CloseButton>
+            {tags.map((tag, index) => (
+              <TagItem key={index}>
+                <Tag>{tag}</Tag>
+                <CloseButton onClick={() => handleRemoveTag(index)}>
                   <AiOutlineClose id="close" />
                 </CloseButton>
-              </Tag>
-            </TagItem>
-            <TagItem>
-              <Tag>
-                #친환경
-                <CloseButton>
-                  <AiOutlineClose id="close" />
-                </CloseButton>
-              </Tag>
-            </TagItem>
+              </TagItem>
+            ))}
           </TagConatainer>
 
           <Button type="submit">사업 아이템 게시하기</Button>
@@ -120,7 +131,7 @@ const Writepost: React.FC = () => {
       </WritepostContainer>
     </>
   );
-};
+}
 
 export default Writepost;
 

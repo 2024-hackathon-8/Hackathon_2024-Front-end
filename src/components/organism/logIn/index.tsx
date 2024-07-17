@@ -1,9 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import HeaderNotLogin from "../../components/common/headerNotLogin";
+import { Outlet, useNavigate } from "react-router-dom";
+import HeaderNotLogin from "../../designSystem/common/headerNotLogin";
 
-const Login: React.FC = () => {
+export default function LogInCompo() {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
@@ -30,9 +30,6 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <header>
-        <HeaderNotLogin />
-      </header>
       <Container>
         <LoginContainer>
           {/* <GoBackButton onClick={handleGoBack}>{"<"}</GoBackButton> */}
@@ -91,19 +88,15 @@ const Login: React.FC = () => {
       </Container>
     </>
   );
-};
-
-export default Login;
+}
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
 `;
 
 const LoginContainer = styled.div`
