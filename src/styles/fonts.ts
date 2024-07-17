@@ -38,21 +38,25 @@ export const Fonts: { [key in any]: React.CSSProperties } = {
     fontSize: '16px',
     fontWeight: 600,
     lineHeight: '24px',
+    letterSpacing: '-2.5%',
   },
   TitleSmall: {
     fontSize: '24px',
     fontWeight: 600,
     lineHeight: '32px',
+    letterSpacing: '-2.5%',
   },
   TitleMedium: {
     fontSize: '36px',
     fontWeight: 600,
     lineHeight: '48px',
+    letterSpacing: '-2.5%',
   },
   TitleLarge: {
     fontSize: '48px',
     fontWeight: 600,
     lineHeight: '64px',
+    letterSpacing: '-2.5%',
   },
 };
 
