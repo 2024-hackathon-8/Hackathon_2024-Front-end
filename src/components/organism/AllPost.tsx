@@ -1,21 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import HeaderLogined from "../designSystem/common/headerLogined";
-import AllPostImg from "../../assets/Img/AllPostImg.png";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import AllPostImg from '../../assets/Img/AllPostImg.png';
+import { useNavigate } from 'react-router-dom';
 
 function AllPost() {
   const navigate = useNavigate();
 
   const toWrite = () => {
-    navigate("/Writepost");
+    navigate('/Writepost');
   };
 
   return (
     <>
-      <header>
-        <HeaderLogined />
-      </header>
       <BannerContainer>
         <BannerItemWrapper>
           <Left>
@@ -25,7 +21,7 @@ function AllPost() {
             </BannerSubTitle>
           </Left>
           <Right>
-            <img src={AllPostImg} width={"80%"} />
+            <img src={AllPostImg} width={'80%'} />
           </Right>
         </BannerItemWrapper>
       </BannerContainer>

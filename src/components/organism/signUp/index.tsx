@@ -1,16 +1,15 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import HeaderNotLogin from "../../designSystem/common/headerNotLogin";
+import { useState, ChangeEvent, FormEvent } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignupCompo() {
-  const [id, setId] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [id, setId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate("/login");
+    navigate('/login');
   };
 
   const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,9 +30,6 @@ export default function SignupCompo() {
 
   return (
     <>
-      <header>
-        <HeaderNotLogin />
-      </header>
       <Container>
         <SignupContainer>
           <BackButton onClick={handleLoginClick}>

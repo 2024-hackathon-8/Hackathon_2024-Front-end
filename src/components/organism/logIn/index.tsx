@@ -1,15 +1,14 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import styled from "styled-components";
-import { Outlet, useNavigate } from "react-router-dom";
-import HeaderNotLogin from "../../designSystem/common/headerNotLogin";
+import { useState, ChangeEvent, FormEvent } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export default function LogInCompo() {
-  const [id, setId] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [id, setId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
 
   const handleSignupClick = () => {
-    navigate("/signup");
+    navigate('/signup');
   };
 
   const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {

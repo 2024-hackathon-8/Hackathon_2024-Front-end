@@ -1,23 +1,22 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { AiOutlineClose } from "react-icons/ai";
-import HeaderLogined from "../designSystem/common/headerLogined";
-import BannerImg from "../../assets/Img/Item.png";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { AiOutlineClose } from 'react-icons/ai';
+import BannerImg from '../../assets/Img/Item.png';
 
 function Writepost() {
-  const [title, setTitle] = useState<string>("");
-  const [introduce, SetIntrodcue] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [goal, setGoal] = useState<string>("");
-  const [tag, setTag] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
+  const [introduce, SetIntrodcue] = useState<string>('');
+  const [content, setContent] = useState<string>('');
+  const [goal, setGoal] = useState<string>('');
+  const [tag, setTag] = useState<string>('');
   const [tags, setTags] = useState<string[]>([]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
   const handleAddTag = () => {
-    if (tag.trim() !== "" && !tags.includes(tag.trim())) {
+    if (tag.trim() !== '' && !tags.includes(tag.trim())) {
       setTags([...tags, tag.trim()]);
-      setTag("");
+      setTag('');
     }
   };
 
@@ -28,16 +27,13 @@ function Writepost() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleAddTag();
     }
   };
   return (
     <>
-      <header>
-        <HeaderLogined />
-      </header>
       <BannerContainer>
         <BannerItemWrapper>
           <Left>
@@ -47,7 +43,7 @@ function Writepost() {
             </BannerSubTitle>
           </Left>
           <Right>
-            <img src={BannerImg} width={"80%"} />
+            <img src={BannerImg} width={'80%'} />
           </Right>
         </BannerItemWrapper>
       </BannerContainer>
@@ -277,12 +273,12 @@ const Textarea = styled.textarea`
 
 const MarkDown = styled.div`
   width: 50%;
-  height: 400px
-  padding:10px;
-  margin-botton:20px;
-  background:white;
+  height: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: white;
   border: 1px solid #eee;
-  border-radius:10px;
+  border-radius: 10px;
 `;
 
 const Button = styled.button`
@@ -337,5 +333,3 @@ const CloseButton = styled.button`
     padding: 0;
   }
 `;
-
-export {};
