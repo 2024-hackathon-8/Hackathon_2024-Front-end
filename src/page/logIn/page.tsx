@@ -1,19 +1,25 @@
 import styled from 'styled-components';
-import LogInCompo from '../../components/organism/logIn';
 import { BackButton } from '../../components/BackButton';
 import { Text } from '../../components/designSystem/Text';
 import { Input } from '../../components/designSystem/Input';
 import { useForm } from '../../hooks/useForm';
-import { useEffect } from 'react';
 import { Button } from '../../components/designSystem/Button';
+import { login } from '../../apis/login';
 
 export default function LogInPage() {
-  const { form, handleChange } = useForm<{
+  const { form, setForm, handleChange } = useForm<{
     id: string;
     password: string;
   }>({ id: '', password: '' });
 
-  useEffect(() => console.log(form), [form]);
+  const handleLogin = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (form.id && form.password)
+      login(form.id, form.password).catch((err) => {
+        alert('회원 정보와 일치하는 계정이 없어요.');
+        setForm({ id: '', password: '' });
+      });
+  };
 
   return (
     <>
@@ -48,7 +54,7 @@ export default function LogInPage() {
             />
           </InputBox>
           <ButtonBox>
-            <Button size="large" full onSubmit={() => {}}>
+            <Button size="large" full type="submit" onClick={handleLogin}>
               로그인
             </Button>
             <QuestionBox>
@@ -64,7 +70,6 @@ export default function LogInPage() {
           </ButtonBox>
         </LoginSection>
       </Main>
-      <LogInCompo />
     </>
   );
 }
@@ -103,4 +108,5 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   padding-top: 72px;
+  min-height: calc(100dvh - 72px);
 `;
