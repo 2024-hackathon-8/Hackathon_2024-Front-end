@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { Button } from '../../components/designSystem/Button';
 
 export default function LogInPage() {
-  const { form, setForm, handleChange } = useForm<{
+  const { form, handleChange } = useForm<{
     id: string;
     password: string;
   }>({ id: '', password: '' });
@@ -33,6 +33,7 @@ export default function LogInPage() {
               placeholder="아이디를 입력해 주세요.."
               label="아이디"
               name="id"
+              required
               value={form.id}
               onChange={handleChange}
             />
@@ -40,18 +41,21 @@ export default function LogInPage() {
               placeholder="비밀번호를 입력해 주세요.."
               label="비밀번호"
               name="password"
+              required
               type="password"
               value={form.password}
               onChange={handleChange}
             />
           </InputBox>
           <ButtonBox>
-            <Button size="large">로그인</Button>
+            <Button size="large" full onSubmit={() => {}}>
+              로그인
+            </Button>
             <QuestionBox>
               <Text font="BodySmall" color="Gray500">
                 아직 회원이 아니신가요?
               </Text>
-              <a>
+              <a href="/signup">
                 <Text font="LabelMedium" color="Blue500">
                   회원가입
                 </Text>
@@ -71,7 +75,6 @@ const QuestionBox = styled.div`
   align-items: center;
 `;
 const ButtonBox = styled.div`
-  justify-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -87,7 +90,7 @@ const TitleBox = styled.div`
   flex-direction: column;
   gap: 8px;
 `;
-const LoginSection = styled.section`
+const LoginSection = styled.form`
   display: flex;
   max-width: 480px;
   width: 100%;
