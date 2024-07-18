@@ -5,10 +5,10 @@ import MainPage from './page/main/page';
 import { Header } from './components/designSystem/Header';
 import { Footer } from './components/designSystem/Footer';
 import PostPage from './page/post/page';
-import SignupType from './components/organism/signUp/signUpType';
-import Interest from './components/organism/signUp/interest';
-import Infomation from './components/organism/signUp/infomation';
-import Signup from './components/organism/signUp';
+import SignupType from './page/signup/signUpType';
+import Interest from './page/signup/interest';
+import Infomation from './page/signup/infomation';
+import Signup from './page/signup';
 
 export default function Router() {
   return (

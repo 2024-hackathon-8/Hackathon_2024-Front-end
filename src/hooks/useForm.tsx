@@ -6,7 +6,6 @@ export function useForm<T>(initialState: T) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(e);
     const { name, value } = e.target;
     setForm((prevForm) => ({
       ...prevForm,

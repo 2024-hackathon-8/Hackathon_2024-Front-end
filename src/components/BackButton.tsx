@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { Arrow_Left } from '../assets';
 import { Colors } from '../styles/colors';
 import { useNavigate } from 'react-router-dom';
+import { ComponentProps } from 'react';
 
-export const BackButton = () => {
+export const BackButton = ({ ...props }: ComponentProps<'button'>) => {
   const navigate = useNavigate();
 
   return (
-    <ButtonStyle onClick={() => navigate(-1)}>
+    <ButtonStyle onClick={() => navigate(-1)} {...props}>
       <Arrow_Left />
     </ButtonStyle>
   );

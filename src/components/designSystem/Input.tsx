@@ -8,11 +8,11 @@ type Props = ComponentProps<'input'> & {
   label?: string;
 };
 
-export const Input = ({ label, type = 'text', ...props }: Props) => {
+export const Input = ({ label, type = 'text', style, ...props }: Props) => {
   const [passShow, setPassShow] = useState<boolean>(false);
 
   return (
-    <InputFrame>
+    <InputFrame style={style}>
       {label && (
         <Text font="LabelMedium" color="Gray800">
           {label}

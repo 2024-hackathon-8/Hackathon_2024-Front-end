@@ -8,10 +8,10 @@ import React, {
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { IoSearch, IoClose } from 'react-icons/io5';
-import { BackButton } from '../../BackButton';
-import { Text } from '../../designSystem/Text';
-import { Input as DSInput } from '../../designSystem/Input';
-import { Button } from '../../designSystem/Button';
+import { BackButton } from '../../components/BackButton';
+import { Text } from '../../components/designSystem/Text';
+import { Input as DSInput } from '../../components/designSystem/Input';
+import { Button } from '../../components/designSystem/Button';
 
 export default function Interest() {
   const navigate = useNavigate();

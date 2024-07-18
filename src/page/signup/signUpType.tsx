@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { BackButton } from '../../BackButton';
-import { Text } from '../../designSystem/Text';
-import { Input } from '../../designSystem/Input';
-import { Button } from '../../designSystem/Button';
-import { useForm } from '../../../hooks/useForm';
+import { BackButton } from '../../components/BackButton';
+import { Text } from '../../components/designSystem/Text';
+import { Input } from '../../components/designSystem/Input';
+import { Button } from '../../components/designSystem/Button';
+import { useForm } from '../../hooks/useForm';
 
 export default function SignupType() {
   const navigate = useNavigate();
@@ -23,10 +23,6 @@ export default function SignupType() {
   }>({ name: '' });
 
   useEffect(() => {
-    console.log(form);
-  }, [form]);
-
-  useEffect(() => {
     if (isIndividual) {
       setInputLabel('이름');
       setInputPlaceholder('이름을 입력해 주세요..');
@@ -40,7 +36,7 @@ export default function SignupType() {
     <Main>
       <SignupSection>
         <TitleBox>
-          <BackButton />
+          <BackButton disabled />
           <div style={{ marginTop: '16px' }}>
             <Text font="TitleLarge">가입 유형</Text>
           </div>
@@ -164,7 +160,7 @@ const Span = styled.span<SpanProps>`
   transform: ${(props) =>
     props.isIndividual
       ? 'translateX(0)'
-      : 'translateX(100%)'}; /* updated transform */
+      : 'translateX(96.5%)'}; /* updated transform */
 `;
 
 const ToggleInput = styled.input`
