@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { AiOutlineClose } from 'react-icons/ai';
-import BannerImg from '../../assets/Img/Item.png';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { AiOutlineClose } from "react-icons/ai";
+import BannerImg from "../../assets/Img/Item.png";
+import MdEditor from "@uiw/react-md-editor";
 
 function Writepost() {
   const [title, setTitle] = useState<string>('');
@@ -10,9 +11,11 @@ function Writepost() {
   const [goal, setGoal] = useState<string>('');
   const [tag, setTag] = useState<string>('');
   const [tags, setTags] = useState<string[]>([]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
+
   const handleAddTag = () => {
     if (tag.trim() !== '' && !tags.includes(tag.trim())) {
       setTags([...tags, tag.trim()]);
@@ -32,6 +35,7 @@ function Writepost() {
       handleAddTag();
     }
   };
+
   return (
     <>
       <BannerContainer>
@@ -43,13 +47,16 @@ function Writepost() {
             </BannerSubTitle>
           </Left>
           <Right>
+
+            <img src={BannerImg} width={"80%"} alt="banner" />
+
             <img src={BannerImg} width={'80%'} />
           </Right>
         </BannerItemWrapper>
       </BannerContainer>
       <WritepostContainer>
         <Form onSubmit={handleSubmit}>
-          <InputConatiner>
+          <InputContainer>
             <Label>사업 이름</Label>
             <Input
               type="text"
@@ -57,9 +64,9 @@ function Writepost() {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="사업 이름을 입력해주세요."
             />
-          </InputConatiner>
+          </InputContainer>
 
-          <InputConatiner>
+          <InputContainer>
             <Label>한 줄 소개</Label>
             <Input
               type="text"
@@ -67,62 +74,60 @@ function Writepost() {
               onChange={(e) => SetIntrodcue(e.target.value)}
               placeholder="사업에 대해서 한 줄로 소개해 주세요."
             />
-          </InputConatiner>
+          </InputContainer>
 
-          <InputConatiner>
+          <InputContainer>
             <Label>사업 소개</Label>
-            <MarkDownContainer>
-              <Textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="사업 소개를 입력해주세요."
-              />
-              <MarkDown />
-            </MarkDownContainer>
-          </InputConatiner>
+            <MdEditor
+              value={content}
+              onChange={(value) => setContent(value || "")}
+              height={400}
+              // placeholder="사업 소개를 입력해주세요."
+            />
+          </InputContainer>
 
-          <InputConatiner>
+          <InputContainer>
             <Label>비전</Label>
             <LongInput
               type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="사업의 비전을 입력해주세요"
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+              placeholder="사업의 비전을 입력해주세요."
             />
-          </InputConatiner>
+          </InputContainer>
 
-          <InputConatiner>
+          <InputContainer>
             <Label>작성 목적</Label>
             <LongInput
               type="text"
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
-              placeholder="사업 아이템의 작성 목적을 알려주세요"
+              placeholder="사업 아이템의 작성 목적을 알려주세요."
             />
-          </InputConatiner>
+          </InputContainer>
 
-          <InputConatiner>
+          <InputContainer>
             <Label>분야 태그</Label>
             <Input
               type="text"
-              placeholder="분야 태그를 추가해보세요"
+              placeholder="분야 태그를 추가해보세요."
               onChange={(e) => setTag(e.target.value)}
               value={tag}
               onKeyDown={handleKeyDown}
             />
-          </InputConatiner>
-          <TagConatainer>
+          </InputContainer>
+          <TagContainer>
             {tags.map((tag, index) => (
               <TagItem key={index}>
-                <Tag>{tag}</Tag>
+                <Tag>#{tag}</Tag>
                 <CloseButton onClick={() => handleRemoveTag(index)}>
                   <AiOutlineClose id="close" />
                 </CloseButton>
               </TagItem>
             ))}
-          </TagConatainer>
+          </TagContainer>
 
-          <Button type="submit">사업 아이템 게시하기</Button>
+          <SubmitButton type="submit">사업 아이템 게시하기</SubmitButton>
         </Form>
       </WritepostContainer>
     </>
@@ -132,6 +137,7 @@ function Writepost() {
 export default Writepost;
 
 const BannerContainer = styled.div`
+  padding-top: 120px;
   width: 100%;
   height: 200px;
   background: #1860f0;
@@ -159,6 +165,7 @@ const BannerTitle = styled.p`
   color: white;
   margin: 20px;
 `;
+
 const BannerSubTitle = styled.p`
   font-size: 15px;
   color: white;
@@ -172,7 +179,7 @@ const WritepostContainer = styled.div`
   margin: 20px 0;
 `;
 
-const InputConatiner = styled.div`
+const InputContainer = styled.div`
   width: 1200px;
   margin: 0;
 `;
@@ -238,6 +245,8 @@ const LongInput = styled.input`
   }
 `;
 
+const TagContainer = styled.div`
+`
 const MarkDownContainer = styled.div`
   width: 100%;
   height: 400px;
@@ -333,3 +342,16 @@ const CloseButton = styled.button`
     padding: 0;
   }
 `;
+const SubmitButton = styled.button`
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  background-color: #1860f0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+`;
+
+export {};
