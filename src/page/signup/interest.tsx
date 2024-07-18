@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-} from 'react';
+import { useState, ChangeEvent, KeyboardEvent, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { IoSearch, IoClose } from 'react-icons/io5';
@@ -137,7 +131,7 @@ export default function Interest() {
           </TagsContainer>
         </InputGroup>
         <ButtonBox>
-          <Button size="large" full>
+          <Button size="large" full type="button">
             회원가입
           </Button>
         </ButtonBox>

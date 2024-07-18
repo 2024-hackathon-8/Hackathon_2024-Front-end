@@ -6,6 +6,7 @@ import { Text } from '../../components/designSystem/Text';
 import { Input } from '../../components/designSystem/Input';
 import { Button } from '../../components/designSystem/Button';
 import { useForm } from '../../hooks/useForm';
+import { signupStore } from '../../store/signupState';
 
 export default function SignupType() {
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ export default function SignupType() {
   const handleToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsIndividual(event.target.value === '개인');
   };
+
+  const { updateUserType } = signupStore();
 
   const { form, handleChange } = useForm<{
     name: string;
@@ -31,6 +34,11 @@ export default function SignupType() {
       setInputPlaceholder('기업 이름을 입력해 주세요..');
     }
   }, [isIndividual]);
+
+  const nextStep = () => {
+    updateUserType(isIndividual ? 'PERSONAL' : 'COMPANY');
+    navigate('/interest');
+  };
 
   return (
     <Main>
@@ -76,7 +84,7 @@ export default function SignupType() {
           />
         </InputBox>
         <ButtonBox>
-          <Button size="large" full onClick={() => navigate('/interest')}>
+          <Button size="large" full onClick={nextStep}>
             다음
           </Button>
         </ButtonBox>
