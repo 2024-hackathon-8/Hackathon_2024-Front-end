@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { AiOutlineClose } from "react-icons/ai";
-import BannerImg from "../../assets/Img/Item.png";
-import MdEditor from "@uiw/react-md-editor";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { AiOutlineClose } from 'react-icons/ai';
+import BannerImg from '../../assets/Img/Item.png';
+import MdEditor from '@uiw/react-md-editor';
 
 function Writepost() {
   const [title, setTitle] = useState<string>('');
@@ -47,8 +47,7 @@ function Writepost() {
             </BannerSubTitle>
           </Left>
           <Right>
-
-            <img src={BannerImg} width={"80%"} alt="banner" />
+            <img src={BannerImg} width={'80%'} alt="banner" />
 
             <img src={BannerImg} width={'80%'} />
           </Right>
@@ -80,7 +79,7 @@ function Writepost() {
             <Label>사업 소개</Label>
             <MdEditor
               value={content}
-              onChange={(value) => setContent(value || "")}
+              onChange={(value) => setContent(value || '')}
               height={400}
               // placeholder="사업 소개를 입력해주세요."
             />
@@ -245,8 +244,7 @@ const LongInput = styled.input`
   }
 `;
 
-const TagContainer = styled.div`
-`
+const TagContainer = styled.div``;
 const MarkDownContainer = styled.div`
   width: 100%;
   height: 400px;
