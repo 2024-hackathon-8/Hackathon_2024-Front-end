@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../../BackButton';
@@ -18,9 +18,8 @@ export default function Information() {
     checkPassword: string;
   }>({ id: '', password: '', checkPassword: '' });
 
-  useEffect(() => console.log(form), [form]);
-
-  const handleIdCheck = () => {
+  const handleIdCheck = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     // Simulate ID check
     setIdChecked(true);
   };
@@ -46,7 +45,9 @@ export default function Information() {
             value={form.id}
             onChange={handleChange}
           />
-          <Button size="large" style={{width:'25%'}} onClick={handleIdCheck}>중복 체크</Button>
+          <Button size="large" style={{ width: '25%' }} onClick={handleIdCheck}>
+            중복 체크
+          </Button>
           {idChecked && (
             <Text font="LabelSmall" color="Blue500">
               사용 가능한 아이디 입니다.
@@ -81,8 +82,6 @@ export default function Information() {
   );
 }
 
-
-
 const ButtonBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -116,4 +115,5 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   padding-top: 72px;
+  min-height: calc(100dvh - 72px);
 `;

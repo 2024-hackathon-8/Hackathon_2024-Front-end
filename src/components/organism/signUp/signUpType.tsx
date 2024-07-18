@@ -10,11 +10,12 @@ import { useForm } from '../../../hooks/useForm';
 export default function SignupType() {
   const navigate = useNavigate();
   const [isIndividual, setIsIndividual] = useState(true);
-  const [inputLabel, setInputLabel] = useState("이름");
-  const [inputPlaceholder, setInputPlaceholder] = useState("이름을 입력해 주세요..");
+  const [inputLabel, setInputLabel] = useState('이름');
+  const [inputPlaceholder, setInputPlaceholder] =
+    useState('이름을 입력해 주세요..');
 
   const handleToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsIndividual(event.target.value === "개인");
+    setIsIndividual(event.target.value === '개인');
   };
 
   const { form, handleChange } = useForm<{
@@ -27,11 +28,11 @@ export default function SignupType() {
 
   useEffect(() => {
     if (isIndividual) {
-      setInputLabel("이름");
-      setInputPlaceholder("이름을 입력해 주세요..");
+      setInputLabel('이름');
+      setInputPlaceholder('이름을 입력해 주세요..');
     } else {
-      setInputLabel("기업 이름");
-      setInputPlaceholder("기업 이름을 입력해 주세요..");
+      setInputLabel('기업 이름');
+      setInputPlaceholder('기업 이름을 입력해 주세요..');
     }
   }, [isIndividual]);
 
@@ -56,9 +57,7 @@ export default function SignupType() {
             defaultChecked
             onChange={handleToggleChange}
           />
-          <ToggleLabel htmlFor="toggle-switch1">
-            개인
-          </ToggleLabel>
+          <ToggleLabel htmlFor="toggle-switch1">개인</ToggleLabel>
           <ToggleInput
             type="radio"
             id="toggle-switch2"
@@ -66,9 +65,7 @@ export default function SignupType() {
             value="기업"
             onChange={handleToggleChange}
           />
-          <ToggleLabel htmlFor="toggle-switch2">
-            기업
-          </ToggleLabel>
+          <ToggleLabel htmlFor="toggle-switch2">기업</ToggleLabel>
           <Span isIndividual={isIndividual} />
         </ToggleContainer>
         <InputBox>
@@ -125,6 +122,7 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   padding-top: 72px;
+  min-height: calc(100dvh - 72px);
 `;
 
 const ToggleContainer = styled.div`
@@ -163,7 +161,10 @@ const Span = styled.span<SpanProps>`
   background-color: #ffffff;
   transition: all 0.3s ease-in-out;
   z-index: 1;
-  transform: ${(props) => (props.isIndividual ? "translateX(0)" : "translateX(100%)")}; /* updated transform */
+  transform: ${(props) =>
+    props.isIndividual
+      ? 'translateX(0)'
+      : 'translateX(100%)'}; /* updated transform */
 `;
 
 const ToggleInput = styled.input`

@@ -55,7 +55,7 @@ export default function PostPage() {
         <PostSection>
           <AllInfo>
             <Text font="LabelLarge">총 120개의 사업 아이템</Text>
-            <a href="/write">
+            <a href="/write" style={{ height: '100%' }}>
               <Button style={{ height: '100%' }}>사업 아이템 작성하기</Button>
             </a>
           </AllInfo>

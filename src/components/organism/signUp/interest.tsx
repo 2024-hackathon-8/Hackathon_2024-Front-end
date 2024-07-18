@@ -1,7 +1,13 @@
-import React, { useState, ChangeEvent, KeyboardEvent, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { IoSearch, IoClose } from "react-icons/io5";
+import React, {
+  useState,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+} from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { IoSearch, IoClose } from 'react-icons/io5';
 import { BackButton } from '../../BackButton';
 import { Text } from '../../designSystem/Text';
 import { Input as DSInput } from '../../designSystem/Input';
@@ -9,7 +15,7 @@ import { Button } from '../../designSystem/Button';
 
 export default function Interest() {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const [tags, setTags] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
@@ -26,9 +32,9 @@ export default function Interest() {
   };
 
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && inputValue.trim()) {
+    if (event.key === 'Enter' && inputValue.trim()) {
       setTags([...tags, inputValue.trim()]);
-      setInputValue("");
+      setInputValue('');
       setSuggestions([]);
       setShowSuggestions(false);
       event.preventDefault();
@@ -37,7 +43,7 @@ export default function Interest() {
 
   const handleSuggestionClick = (suggestion: string) => {
     setTags([...tags, suggestion]);
-    setInputValue("");
+    setInputValue('');
     setSuggestions([]);
     setShowSuggestions(false);
   };
@@ -49,16 +55,16 @@ export default function Interest() {
   const fetchSuggestions = (query: string) => {
     // Simulate an API call
     const simulatedSuggestions = [
-      "이동통신",
-      "이동통신 서비스",
-      "이동통신 시스템",
-      "이동통신 단말기",
-      "기타 이동통신",
-      "기타 이동통신기기",
-      "친환경",
-      "마케팅",
-      "쇼핑",
-      "IT",
+      '이동통신',
+      '이동통신 서비스',
+      '이동통신 시스템',
+      '이동통신 단말기',
+      '기타 이동통신',
+      '기타 이동통신기기',
+      '친환경',
+      '마케팅',
+      '쇼핑',
+      'IT',
     ].filter((item) => item.toLowerCase().includes(query.toLowerCase()));
     setSuggestions(simulatedSuggestions);
     setShowSuggestions(true);
@@ -74,9 +80,9 @@ export default function Interest() {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -123,7 +129,9 @@ export default function Interest() {
             {tags.map((tag, index) => (
               <Tag key={index}>
                 {tag}
-                <TagClose onClick={() => removeTag(index)}><IoClose /></TagClose>
+                <TagClose onClick={() => removeTag(index)}>
+                  <IoClose />
+                </TagClose>
               </Tag>
             ))}
           </TagsContainer>
@@ -200,13 +208,13 @@ const TagsContainer = styled.div`
 const Tag = styled.div`
   display: flex;
   align-items: center;
-  background-color: #EBF0FA;
-  border: 1px solid #BED2FA;
+  background-color: #ebf0fa;
+  border: 1px solid #bed2fa;
   padding: 10px 20px;
   border-radius: 100px;
   font-family: Pretendard;
   font-size: 16px;
-  color: #1860F0;
+  color: #1860f0;
   text-align: center;
 `;
 
@@ -236,4 +244,5 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   padding-top: 72px;
+  min-height: calc(100dvh - 72px);
 `;

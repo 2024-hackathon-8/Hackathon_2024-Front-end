@@ -15,8 +15,6 @@ export default function Signup() {
     certification: string;
   }>({ phone: '', certification: '' });
 
-  useEffect(() => console.log(form), [form]);
-
   return (
     <Main>
       <LoginSection>
@@ -34,7 +32,7 @@ export default function Signup() {
             <Input
               placeholder="아이디를 입력해 주세요.."
               label="아이디"
-              name="id"
+              name="phone"
               required
               value={form.phone}
               onChange={handleChange}
@@ -44,9 +42,8 @@ export default function Signup() {
           <Input
             placeholder="비밀번호를 입력해 주세요.."
             label="비밀번호"
-            name="password"
+            name="certification"
             required
-            type="password"
             value={form.certification}
             onChange={handleChange}
           />
@@ -56,15 +53,15 @@ export default function Signup() {
             다음
           </Button>
           <QuestionBox>
-              <Text font="BodySmall" color="Gray500">
-                이미 가입하셨나요?
+            <Text font="BodySmall" color="Gray500">
+              이미 가입하셨나요?
+            </Text>
+            <a href="/login">
+              <Text font="LabelMedium" color="Blue500">
+                로그인
               </Text>
-              <a href="/login">
-                <Text font="LabelMedium" color="Blue500">
-                  로그인
-                </Text>
-              </a>
-            </QuestionBox>
+            </a>
+          </QuestionBox>
         </ButtonBox>
       </LoginSection>
     </Main>
@@ -116,4 +113,5 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   padding-top: 72px;
+  min-height: calc(100dvh - 72px);
 `;
