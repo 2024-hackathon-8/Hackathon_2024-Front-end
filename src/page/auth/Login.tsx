@@ -22,16 +22,19 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // 로그인 로직 처리
+  };
+
+  const handleGoBack = () => {
+    navigate(-1); 
   };
 
   return (
     <>
       <LoginContainer>
+        <GoBackButton onClick={handleGoBack}>{'<'}</GoBackButton>
         <LoginForm onSubmit={handleSubmit}>
-          <LogoContainer>
-            <Logo src={Images.logo} alt="Logo" />
-          </LogoContainer>
+          <Title>로그인</Title>
+          <Subtitle>로그인하여 서비스를 이용해 보세요</Subtitle>
           <InputGroup>
             <Label htmlFor="text">아이디</Label>
             <Input
@@ -57,8 +60,8 @@ const Login: React.FC = () => {
           <LoginButton type="submit">로그인</LoginButton>
           <LoginPromptContainer>
             <SignupPromptText>
-              계정이 없으신가요?
-              <SignupText onClick={handleSignupClick}>가입하기</SignupText>
+              아직 회원이 아니신가요?
+              <SignupText onClick={handleSignupClick}>회원가입</SignupText>
             </SignupPromptText>
           </LoginPromptContainer>
         </LoginForm>
@@ -85,18 +88,31 @@ const LoginForm = styled.form`
   margin: 20px 0;
 `;
 
-const LogoContainer = styled.div`
-  margin-bottom: 20px;
-  width: 100%;
-  border-bottom: 3px solid #052970;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
+const GoBackButton = styled.button`
+  position: absolute;
+  top: 20px;
+  left: 20px; 
+  background-color:#ffffff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
-const Logo = styled.img`
-  width: 50px;
-  height: auto;
+const Title = styled.h1`
+  font-size: 40px;
+  margin-bottom: 1px;
+  color: #333;
+  align-self: flex-start;
+`;
+
+const Subtitle = styled.p`
+  font-size: 14px;
+  color: #888888;
+  margin-bottom: 20px;
+  align-self: flex-start; 
 `;
 
 const InputGroup = styled.div`
@@ -116,7 +132,8 @@ const Input = styled.input`
   width: 100%;
   height: 40px;
   padding: 10px;
-  border: 1px solid #ccc;
+  background-color: #f6f6f6;
+  border: 1px solid #eeeeee;
   border-radius: 5px;
   font-size: 16px;
   box-sizing: border-box;
@@ -130,7 +147,7 @@ const LoginButton = styled.button`
   width: 100%;
   height: 60px;
   padding: 12px;
-  background-color: #052970;
+  background-color: #1860f0;
   color: white;
   border: none;
   border-radius: 5px;
@@ -143,9 +160,10 @@ const LoginPromptContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-`
 const SignupPromptText = styled.span`
+  margin-top: 30px;
   font-size: 14px;
   color: #666;
 `;

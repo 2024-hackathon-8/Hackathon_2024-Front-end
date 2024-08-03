@@ -1,4 +1,4 @@
-import logo from "./Img/logo.png";
+import Left from "./Img/Arrow_Left.png";
 export const Images = {
-  logo,
+  Left,
 };

@@ -38,9 +38,6 @@ const Signup: React.FC = () => {
     <>
       <SignupContainer>
         <SignupForm onSubmit={handleSubmit}>
-          <LogoContainer>
-            <Logo src={Images.logo} alt="Logo" />
-          </LogoContainer>
           <InputGroup>
             <Label htmlFor="id">아이디</Label>
             <Input
